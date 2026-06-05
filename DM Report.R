@@ -74,4 +74,37 @@ cnt_all %>%
                 text_justification = c("1","1","c","c","c","c","c"),
                 border_top = rep("",7),
                 border_right = rep("",7),
-                border_top=rep("",7))
+                border_top=rep("",7))%>% 
+  rtf_colheader(colheader = paste0("| | N=",cnt_pbo,"| N=",cnt_5mg,
+                                   "| N=",cnt_10mg,"| N=",cnt_50,
+                                   "| N=",cnt_pbo+cnt_5mg+cnt_10mg+cnt_50),
+                col_rel_width = c(7,4,3,3,3,3,3),
+                border_top = rep("",7),
+                border_right=rep("",7),
+                border_left=rep("",7)) %>% 
+  rtf_body(as_colheader = F,
+           col_rel_width = c(7,4,3,3,3,3,3),
+           border_first = rep("single",7),
+           border_last = rep("single",7),
+           border_right = rep("single",7),
+           border_left = rep("single",7),
+           text_justification = c("l","l","c","c","c","c","c"),
+           text_font_size = 8,
+           last_row = F) %>% 
+  rtf_footnote(footnote = c("Source:listings 16.2.4.1 and 16.2.4.3",
+                            "Note:The percentages and based on the xxx Analysisset"),
+               border_left = "",
+               border_right = "",
+               border_bottom = "",
+               text_font_size = 7) %>% 
+               write_rtf("table.rtf")
+View(cnt_all)            
+              
+file.info("table.rtf")
+args(write_rtf)
+
+file.info("table.rtf")
+class(tmp)
+exists("cnt_50")
+dim(cnt_all)
+
